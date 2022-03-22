@@ -6,6 +6,7 @@ from .models import CustomUser, UserProfile
 class CustomUserAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     pass
