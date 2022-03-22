@@ -25,6 +25,7 @@ services:
       - '8000:8000'
     depends_on:
       - fds_postgres
+
   fds_pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -32,8 +33,11 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin
     ports:
       - '5050:80'
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
     depends_on:
       - fds_postgres
 
 volumes:
   postgres_data: {}
+  pgadmin_data: {}

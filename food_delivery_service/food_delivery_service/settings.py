@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'rest_framework_simplejwt',
-    'users'
+    'location_field.apps.DefaultConfig',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +90,7 @@ DATABASES = {
     }
 }
 
-# User model for authorization
+# User model for authentication
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # Password validation
@@ -132,3 +133,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REST framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+      'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+# Location field settings
+LOCATION_FIELD = {
+    'map.provider': 'google',
+    'search.provider': 'google',
+}
