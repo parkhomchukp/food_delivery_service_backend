@@ -32,6 +32,8 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin
     ports:
       - '5050:80'
+    depends_on:
+      - fds_postgres
 
 volumes:
   postgres_data: {}
