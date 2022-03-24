@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
-from location_field.models.plain import PlainLocationField
 
 from .validators import is_adult_validator
 from .managers import CustomUserManager
@@ -25,7 +24,15 @@ class CustomUser(AbstractUser):
 
 
 class UserProfile(models.Model):
+
+    class CitiesChoices(models.TextChoices):
+        KYIV = 'KV', 'Kyiv'
+        LVIV = 'LV', 'Lviv'
+        ODESA = 'OD', 'Odesa'
+
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    city = models.CharField(max_length=255, blank=True, null=True)
-    location = PlainLocationField(based_fields=['city'], zoom=7)
+    city = models.CharField(max_length=2, choices=CitiesChoices.choices, default=CitiesChoices.LVIV)
     is_vip = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user
