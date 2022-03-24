@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'rest_framework_simplejwt',
-    'location_field.apps.DefaultConfig',
     'users',
 ]
 
@@ -139,10 +138,4 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
       'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-}
-
-# Location field settings
-LOCATION_FIELD = {
-    'map.provider': 'google',
-    'search.provider': 'google',
 }
