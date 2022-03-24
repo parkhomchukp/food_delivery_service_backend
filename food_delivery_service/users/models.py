@@ -35,4 +35,4 @@ class UserProfile(models.Model):
     is_vip = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return self.user.email
